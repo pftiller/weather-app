@@ -47,6 +47,10 @@ const postWeather = async (temp, content, date) => {
     })
     try {
         console.log(finalResponse);
+        document.getElementById('date').append(finalResponse.date);
+        document.getElementById('temp').append(finalResponse.temp);
+        document.getElementById('content').append(finalResponse.content);
+
     } catch (err) {
         console.log(err)
     }
