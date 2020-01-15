@@ -47,9 +47,21 @@ const postWeather = async (temp, content, date) => {
     })
     try {
         console.log(finalResponse);
-        document.getElementById('date').append(finalResponse.date);
-        document.getElementById('temp').append(finalResponse.temp);
-        document.getElementById('content').append(finalResponse.content);
+        let entryHolder = document.getElementById('entryHolder');
+        console.log(entryHolder)
+        console.log(entryHolder)
+        if(entryHolder.firstElementChild == null) {
+
+
+            let text = "<table><tr><th>Date</th><th>Temperature</th><th>Mood</th></tr>"
+            text = text + `<tr><td>${finalResponse.date}</td><td>${finalResponse.temp} </td><td>${finalResponse.content}</td></tr>`
+            entryHolder.innerHTML = entryHolder.innerHTML + text;
+        }
+        else {
+            let theTable = document.querySelector('table');
+            let text = `<tr><td>${finalResponse.date}</td><td>${finalResponse.temp} </td><td>${finalResponse.content}</td></tr>`;
+            theTable.innerHTML = theTable.innerHTML + text;
+        }
 
     } catch (err) {
         console.log(err)
